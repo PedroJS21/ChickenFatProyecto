@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="menu_restaurante" type="id" />
+    <item name="menu_llevar" type="id" />
+    <item name="menu_delivery" type="id" />
+</resources>
