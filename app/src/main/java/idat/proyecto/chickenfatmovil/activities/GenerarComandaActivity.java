@@ -1,12 +1,15 @@
-package idat.proyecto.chickenfatmovil;
+package idat.proyecto.chickenfatmovil.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
-import android.view.MenuItem;
+
+import java.util.Objects;
+
+import idat.proyecto.chickenfatmovil.R;
+import idat.proyecto.chickenfatmovil.fragments.SearchProductFragment;
 
 public class GenerarComandaActivity extends AppCompatActivity {
 
@@ -22,7 +25,8 @@ public class GenerarComandaActivity extends AppCompatActivity {
         fragment = SearchProductFragment.newInstance();
         fragmentManager.beginTransaction().replace(R.id.fcGenerarComanda, fragment).commit();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Carta");
     }
 
 

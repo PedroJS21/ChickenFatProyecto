@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EA9595"
-    tools:context=".fragments.toptab.DeliveryFragment">
+    android:background="#F6E96E"
+    tools:context=".fragments.bottom.FinalizadoFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Delivery Fragment"
+        android:text="Finalizado Fragment"
         android:textSize="40sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:gravity="center"/>
 
 </FrameLayout>

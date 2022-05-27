@@ -4,8 +4,13 @@
     <string name="password">Password</string>
     <string name="recordar_usuario">Recordar usuario</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
+
+    <string name="generar_comanda">Generar Comanda</string>
     <string name="pedidos_terminados">Pedidos Terminados</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="costo">Costo</string>
+    <string name="categoria">Categoria</string>
 </resources>

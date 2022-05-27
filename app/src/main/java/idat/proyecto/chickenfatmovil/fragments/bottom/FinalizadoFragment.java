@@ -1,4 +1,4 @@
-package idat.proyecto.chickenfatmovil.fragments;
+package idat.proyecto.chickenfatmovil.fragments.bottom;
 
 import android.os.Bundle;
 
@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import idat.proyecto.chickenfatmovil.R;
 
 
-public class LlevarFragment extends Fragment {
+public class FinalizadoFragment extends Fragment {
 
 
-    public static LlevarFragment newInstance() {
-        LlevarFragment fragment = new LlevarFragment();
-        return fragment;
+    public static FinalizadoFragment newInstance() {
+        return new FinalizadoFragment();
     }
 
     @Override
@@ -27,6 +26,6 @@ public class LlevarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_llevar, container, false);
+        return inflater.inflate(R.layout.fragment_finalizado, container, false);
     }
 }

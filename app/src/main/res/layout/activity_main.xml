@@ -4,39 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".activities.MainActivity"
     android:layout_marginLeft="55sp"
     android:layout_marginRight="55sp"
     android:gravity="center"
     android:orientation="vertical">
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="500dp"
-                android:layout_height="250dp"
-                android:layout_marginBottom="30dp"
-                app:srcCompat="@drawable/cf_loguin"
-                tools:ignore="ContentDescription" />
 
-            <EditText
-                android:id="@+id/edtUsuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/darker_gray"
-                android:hint="@string/usuario"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                android:autofillHints="username"/>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="500dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@drawable/cf_loguin"
+        tools:ignore="ContentDescription" />
 
-            <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@android:color/darker_gray"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:autofillHints="password"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:startIconDrawable="@drawable/ic_user"
+        app:startIconTint="@color/red_p"
+        app:hintTextColor="@color/black"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:background="@color/white"
+            android:hint="@string/usuario"
+            android:inputType="textPersonName"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/red_p"
+        app:startIconDrawable="@drawable/ic_pass"
+        app:startIconTint="@color/red_p"
+        app:hintTextColor="@color/black"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:autofillHints="password"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
             <CheckBox
                 android:id="@+id/cbRecordarUsuario"

@@ -1,4 +1,4 @@
-package idat.proyecto.chickenfatmovil;
+package idat.proyecto.chickenfatmovil.fragments;
 
 import android.os.Bundle;
 
@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -24,6 +22,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import idat.proyecto.chickenfatmovil.adapter.ProductoAdapter;
+import idat.proyecto.chickenfatmovil.R;
 import idat.proyecto.chickenfatmovil.model.Producto;
 
 public class SearchProductFragment extends Fragment implements SearchView.OnQueryTextListener {
@@ -33,18 +33,15 @@ public class SearchProductFragment extends Fragment implements SearchView.OnQuer
     List<Producto> productoList;
     SearchView txtBuscar;
     RecyclerView listaProducto;
-    Adapter adapter;
+    ProductoAdapter productoAdapter;
 
     public static SearchProductFragment newInstance() {
-        SearchProductFragment fragment = new SearchProductFragment();
-        return fragment;
+        return new SearchProductFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
@@ -64,43 +61,33 @@ public class SearchProductFragment extends Fragment implements SearchView.OnQuer
         loadProducto();
 
         return view;
-
-
     }
 
     private void loadProducto() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_producto,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray array = new JSONArray(response);
+                response -> {
+                    try {
+                        JSONArray array = new JSONArray(response);
 
-                            for (int i = 0; i < array.length(); i++) {
-                                JSONObject producto = array.getJSONObject(i);
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject producto = array.getJSONObject(i);
 
-                                productoList.add(new Producto(
-                                        producto.getInt("id"),
-                                        producto.getString("nombre"),
-                                        producto.getDouble("costo"),
-                                        producto.getString("categ")
-                                ));
-                            }
-
-                            adapter = new Adapter(getActivity(), productoList);
-                            listaProducto.setAdapter(adapter);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            productoList.add(new Producto(
+                                    producto.getInt("id"),
+                                    producto.getString("nombre"),
+                                    producto.getDouble("costo"),
+                                    producto.getString("categ")
+                            ));
                         }
+                        productoAdapter = new ProductoAdapter(productoList);
+                        listaProducto.setAdapter(productoAdapter);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //
-                    }
+                error -> {
                 });
-        Volley.newRequestQueue(getActivity()).add(stringRequest);
+        Volley.newRequestQueue(requireActivity()).add(stringRequest);
     }
 
     @Override
@@ -110,7 +97,7 @@ public class SearchProductFragment extends Fragment implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextChange(String s) {
-        adapter.filtrado(s);
+        productoAdapter.filtrado(s);
         return false;
     }
 }

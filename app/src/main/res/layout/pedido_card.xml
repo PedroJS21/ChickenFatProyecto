@@ -16,29 +16,37 @@
             >
 
             <TextView
-                android:id="@+id/producto_title"
+                android:id="@+id/pedido_encabezado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
                 android:text="@string/title"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
-            <TextView
-                android:id="@+id/producto_costo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="@string/costo"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
 
             <TextView
-                android:id="@+id/producto_categ"
+                android:id="@+id/pedido_estado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
                 android:text="@string/categoria"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
 
+            <TextView
+                android:id="@+id/pedido_observacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="Observacion"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+
+            <TextView
+                android:id="@+id/pedido_mesero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="@string/categoria"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
         </LinearLayout>
 
 

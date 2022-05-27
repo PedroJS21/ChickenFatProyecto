@@ -1,4 +1,4 @@
-package idat.proyecto.chickenfatmovil;
+package idat.proyecto.chickenfatmovil.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,13 +14,13 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import idat.proyecto.chickenfatmovil.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,23 +53,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void validarUsuario() {
         String URL = "http://192.168.0.73/chickenfat/validar_usuario.php";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (!response.isEmpty()){
-                    guardarSesion();
-                    guardarUsuario();
-                    irPrincipal();
-                } else {
-                    Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
-                }
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+            if (!response.isEmpty()){
+                guardarSesion();
+                guardarUsuario();
+                irPrincipal();
+            } else {
+                Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        }){
+        }, error -> Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() {
                 Map<String,String> parametros=new HashMap<>();
@@ -92,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     public void guardarSesion(){
         editor.putBoolean("estado_sesion",true).apply();
     }
+
     public void validarSesion(){
         if(preferences.getBoolean("estado_sesion",false)){
             irPrincipal();
@@ -113,4 +106,6 @@ public class MainActivity extends AppCompatActivity {
             cbRecordarUsuario.setChecked(true);
         }
     }
+
+
 }

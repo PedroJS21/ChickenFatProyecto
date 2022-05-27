@@ -1,35 +1,34 @@
-package idat.proyecto.chickenfatmovil;
+package idat.proyecto.chickenfatmovil.adapter;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import idat.proyecto.chickenfatmovil.R;
 import idat.proyecto.chickenfatmovil.model.Producto;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ProductoViewHolder> {
+public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder> {
 
-    private Context mCtx;
-    private List<Producto> productoList;
-    private ArrayList<Producto> listaOriginal;
+    private final List<Producto> productoList;
+    private final ArrayList<Producto> listaOriginal;
 
-    public Adapter(Context mCtx, List<Producto> productoList) {
-        this.mCtx = mCtx;
+    public ProductoAdapter(List<Producto> productoList) {
         this.productoList = productoList;
-
 
         listaOriginal = new ArrayList<>();
         listaOriginal.addAll(productoList);
-
     }
 
+    @NonNull
     @Override
     public ProductoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -43,13 +42,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ProductoViewHolder> {
     @Override
     public void onBindViewHolder(ProductoViewHolder holder, int position) {
         Producto producto = productoList.get(position);
-        String Costo = "S/." + String.valueOf(producto.getCosto());
+        String Costo = "S/." + producto.getCosto();
+
         holder.textViewNombre.setText(producto.getNombre());
         holder.textViewCosto.setText(Costo);
         holder.textViewCategoria.setText(producto.getCateg());
-
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void filtrado(String txtBuscar) {
         int longitud = txtBuscar.length();
         if(longitud == 0) {
@@ -71,13 +71,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ProductoViewHolder> {
         notifyDataSetChanged();
     }
 
+
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return productoList.size();
     }
 
-    class ProductoViewHolder extends RecyclerView.ViewHolder {
+    static class ProductoViewHolder extends RecyclerView.ViewHolder {
         TextView textViewNombre, textViewCosto,textViewCategoria;
 
         public ProductoViewHolder(View itemView) {

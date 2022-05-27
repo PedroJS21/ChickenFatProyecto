@@ -5,6 +5,7 @@ public class Producto {
     private String nombre;
     private Double costo;
     private String categ;
+    private int cantidad;
 
     public Producto(int id_prod, String nombre, Double costo, String categ) {
         this.id_prod = id_prod;
@@ -13,7 +14,12 @@ public class Producto {
         this.categ = categ;
     }
 
-
+    public Producto(int id_prod, String nombre, Double costo, int cantidad) {
+        this.id_prod = id_prod;
+        this.nombre = nombre;
+        this.costo = costo;
+        this.cantidad = cantidad;
+    }
 
     public int getId_prod() {
         return id_prod;
@@ -27,5 +33,8 @@ public class Producto {
     }
     public String getCateg() {
         return categ;
+    }
+    public int getCantidad() {
+        return cantidad;
     }
 }
